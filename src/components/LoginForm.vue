@@ -2,12 +2,14 @@
   <div>
     <q-form @submit="onSubmit" @reset="onReset">
       <div class="flex column flex-center q-my-lg">
-        <img
+        <!-- <img
           alt="Quasar logo"
           src="~assets/Doctor-pana.svg"
           class="q-mb-lg"
           style="height: 10rem"
-        />
+        /> -->
+        <q-icon v-if="user.type === 'patient'" name="personal_injury" color="accent" size="10em" class="q-mb-lg" />
+        <q-icon v-else-if="user.type === 'doctor'" name="vaccines" color="primary" size="10em" class="q-mb-lg" />
         <div class="text-h4">Sign-in to continue</div>
       </div>
       <q-input

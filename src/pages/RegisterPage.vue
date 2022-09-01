@@ -8,11 +8,17 @@
           class="flex column items-center"
           @click="router.push(`/register/patient`)"
         >
-          <img
+          <!-- <img
             alt="Quasar logo"
             src="~assets/Patient-pana.svg"
             class="q-mb-lg"
             style="height: 10rem"
+          /> -->
+          <q-icon
+            name="personal_injury"
+            color="accent"
+            size="11em"
+            class="q-mb-lg"
           />
           <span class="text-h5">a patient</span>
         </div>
@@ -20,12 +26,13 @@
           class="flex column items-center"
           @click="router.push(`/register/doctor`)"
         >
-          <img
+          <!-- <img
             alt="Quasar logo"
             src="~assets/Doctor-pana.svg"
             class="q-mb-lg"
             style="height: 10rem"
-          />
+          /> -->
+          <q-icon name="vaccines" color="primary" size="11em" class="q-mb-lg" />
           <span class="text-h5">a doctor</span>
         </div>
       </div>
