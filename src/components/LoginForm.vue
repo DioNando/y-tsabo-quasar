@@ -44,7 +44,6 @@
         standout
         bottom-slots
         label="Email"
-        clearable
         type="text"
         v-model="user.username"
         autocomplete="off"
@@ -61,7 +60,6 @@
         standout
         bottom-slots
         label="Password"
-        clearable
         type="password"
         v-model="user.password"
         class="q-pb-lg"
@@ -80,7 +78,7 @@
         <q-radio v-model="user.type" val="doctor" label="Doctor" />
       </div>
       <div class="q-pb-lg" align="right">
-        <q-btn label="Sign-in" type="submit" color="primary" icon-right="login" rounded/>
+        <q-btn label="Sign-in" type="submit" color="primary" icon-right="login"/>
       </div>
     </q-form>
   </div>
