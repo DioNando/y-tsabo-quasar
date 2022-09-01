@@ -2,18 +2,45 @@
   <div>
     <q-form @submit="onSubmit" @reset="onReset">
       <div class="flex column flex-center q-my-lg">
-        <!-- <img
-          alt="Quasar logo"
-          src="~assets/Doctor-pana.svg"
-          class="q-mb-lg"
-          style="height: 10rem"
-        /> -->
-        <q-icon v-if="user.type === 'patient'" name="personal_injury" color="accent" size="10em" class="q-mb-lg" />
-        <q-icon v-else-if="user.type === 'doctor'" name="vaccines" color="primary" size="10em" class="q-mb-lg" />
+        <!-- <transition appear enter-active-class="animated bounceIn">
+          <q-icon
+            v-if="user.type === 'patient'"
+            name="personal_injury"
+            color="accent"
+            size="10em"
+            class="q-mb-lg"
+          />
+          <q-icon
+            v-else-if="user.type === 'doctor'"
+            name="vaccines"
+            color="primary"
+            size="10em"
+            class="q-mb-lg"
+          />
+        </transition> -->
+        <transition
+          v-if="user.type === 'patient'"
+          appear
+          enter-active-class="animated bounceIn slow"
+        >
+          <q-icon
+            name="personal_injury"
+            color="accent"
+            size="8em"
+            class="q-mb-lg"
+          />
+        </transition>
+        <transition
+          v-else-if="user.type === 'doctor'"
+          appear
+          enter-active-class="animated bounceIn slow"
+        >
+          <q-icon name="vaccines" color="primary" size="8em" class="q-mb-lg" />
+        </transition>
         <div class="text-h4">Sign-in to continue</div>
       </div>
       <q-input
-        color="primary"
+        color="secondary"
         standout
         bottom-slots
         label="Email"
@@ -30,7 +57,7 @@
         </template>
       </q-input>
       <q-input
-        color="primary"
+        color="secondary"
         standout
         bottom-slots
         label="Password"
@@ -53,7 +80,7 @@
         <q-radio v-model="user.type" val="doctor" label="Doctor" />
       </div>
       <div class="q-pb-lg" align="right">
-        <q-btn label="Sign-in" type="submit" color="primary" />
+        <q-btn label="Sign-in" type="submit" color="primary" icon-right="login" rounded/>
       </div>
     </q-form>
   </div>

@@ -3,11 +3,11 @@
 
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
-        <q-toolbar-title>
+        <q-toolbar-title class="flex justify-between items-center">
           <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+            <img src="~assets/O-2.svg">
           </q-avatar>
-          Title
+          <div>Y-TSABO</div>
         </q-toolbar-title>
       </q-toolbar>
     </q-header>

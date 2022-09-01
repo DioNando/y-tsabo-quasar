@@ -1,40 +1,46 @@
 <template>
   <q-page padding class="flex column justify-between">
     <div class="flex column justify-evenly items-center" style="flex: auto">
+      <img
+        alt="Quasar logo"
+        src="~assets/Y-2.svg"
+        style="height: 10rem"
+      />
       <div class="text-h4">Please, select one!</div>
       <div class="text-h5">You are</div>
       <div class="fit row no-wrap justify-evenly items-center content-start">
-        <div
-          class="flex column items-center"
-          @click="router.push(`/register/patient`)"
-        >
-          <!-- <img
-            alt="Quasar logo"
-            src="~assets/Patient-pana.svg"
-            class="q-mb-lg"
-            style="height: 10rem"
-          /> -->
-          <q-icon
-            name="personal_injury"
-            color="accent"
-            size="11em"
-            class="q-mb-lg"
-          />
-          <span class="text-h5">a patient</span>
-        </div>
-        <div
-          class="flex column items-center"
-          @click="router.push(`/register/doctor`)"
-        >
-          <!-- <img
-            alt="Quasar logo"
-            src="~assets/Doctor-pana.svg"
-            class="q-mb-lg"
-            style="height: 10rem"
-          /> -->
-          <q-icon name="vaccines" color="primary" size="11em" class="q-mb-lg" />
-          <span class="text-h5">a doctor</span>
-        </div>
+        <transition appear enter-active-class="animated bounceIn slower">
+          <q-card
+            flat
+            bordered
+            class="flex column items-center q-pa-sm"
+            @click="router.push(`/register/patient`)"
+          >
+            <q-icon
+              name="personal_injury"
+              color="accent"
+              size="8em"
+              class="q-mb-lg"
+            />
+            <span class="text-h5">a patient</span>
+          </q-card>
+        </transition>
+        <transition appear enter-active-class="animated bounceIn slower">
+          <q-card
+            flat
+            bordered
+            class="flex column items-center q-pa-sm"
+            @click="router.push(`/register/doctor`)"
+          >
+            <q-icon
+              name="vaccines"
+              color="primary"
+              size="8em"
+              class="q-mb-lg"
+            />
+            <span class="text-h5">a doctor</span>
+          </q-card>
+        </transition>
       </div>
     </div>
     <div>
