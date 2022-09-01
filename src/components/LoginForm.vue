@@ -45,7 +45,7 @@
         bottom-slots
         label="Email"
         type="text"
-        v-model="user.username"
+        v-model="user.mail"
         autocomplete="off"
         class="q-pb-lg"
         lazy-rules
@@ -78,7 +78,12 @@
         <q-radio v-model="user.type" val="doctor" label="Doctor" />
       </div>
       <div class="q-pb-lg" align="right">
-        <q-btn label="Sign-in" type="submit" color="primary" icon-right="login"/>
+        <q-btn
+          label="Sign-in"
+          type="submit"
+          color="primary"
+          icon-right="login"
+        />
       </div>
     </q-form>
   </div>
@@ -94,7 +99,7 @@ export default {
   data() {
     return {
       user: {
-        username: "",
+        mail: "",
         password: "",
         type: "patient",
       },
@@ -108,12 +113,16 @@ export default {
   },
   methods: {
     onSubmit() {
-      this.router.push("/dashboard");
+      if (this.user.type === "patient") {
+        this.router.push("/patient/dashboard");
+      } else {
+        this.router.push("/doctor/dashboard");
+      }
       this.toast.notify({
         color: "positive",
         textColor: "white",
         icon: "waving_hand",
-        message: "Nice to see you, " + this.user.username,
+        message: "Nice to see you, " + this.user.mail,
         position: "top",
       });
     },

@@ -20,6 +20,16 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/doctor",
+    component: () => import("layouts/DoctorLayout.vue"),
+    children: [{ path: "dashboard", component: () => import("pages/doctor/DashboardDoctor.vue") }],
+  },
+  {
+    path: "/patient",
+    component: () => import("layouts/PatientLayout.vue"),
+    children: [{ path: "dashboard", component: () => import("pages/patient/DashboardPatient.vue") }],
+  },
   // PAGE ERROR 404
   {
     path: "/:catchAll(.*)*",
