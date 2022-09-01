@@ -13,14 +13,14 @@
           <q-card
             flat
             bordered
-            class="flex column items-center q-pa-sm"
+            class="flex column items-center q-pa-sm bg-grey-1"
             @click="router.push(`/register/patient`)"
           >
             <q-icon
               name="personal_injury"
               color="accent"
               size="8em"
-              class="q-mb-lg"
+              class="q-mb-sm"
             />
             <span class="text-h5">a patient</span>
           </q-card>
@@ -29,21 +29,21 @@
           <q-card
             flat
             bordered
-            class="flex column items-center q-pa-sm"
+            class="flex column items-center q-pa-sm bg-grey-1"
             @click="router.push(`/register/doctor`)"
           >
             <q-icon
               name="vaccines"
               color="primary"
               size="8em"
-              class="q-mb-lg"
+              class="q-mb-sm"
             />
             <span class="text-h5">a doctor</span>
           </q-card>
         </transition>
       </div>
     </div>
-    <div>
+    <div class="q-mt-lg">
       Already have an account,
       <span class="text-accent" @click="router.push(`/login`)">sign-in</span>
     </div>
