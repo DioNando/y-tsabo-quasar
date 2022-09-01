@@ -190,12 +190,12 @@ export default {
   data() {
     return {
       patient: {
-        name: "1",
-        age: "1",
-        idNumber: "1",
-        mail: "1",
-        password: "aflknkenglkernglkergnerg",
-        passwordConfirm: "aflknkenglkernglkergnerg",
+        name: "",
+        age: "",
+        idNumber: "",
+        mail: "",
+        password: "",
+        passwordConfirm: "",
         gender: "man",
         accept: false,
       },
