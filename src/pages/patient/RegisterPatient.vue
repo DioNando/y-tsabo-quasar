@@ -44,6 +44,7 @@
       </div>
       <q-input
         color="secondary"
+        dense
         standout
         bottom-slots
         label="Fullname"
@@ -60,6 +61,7 @@
       </q-input>
       <q-input
         color="secondary"
+        dense
         standout
         bottom-slots
         label="Age"
@@ -77,6 +79,7 @@
       </q-input>
       <q-input
         color="secondary"
+        dense
         standout
         bottom-slots
         label="Id Number"
@@ -92,6 +95,7 @@
       </q-input>
       <q-input
         color="secondary"
+        dense
         standout
         bottom-slots
         label="Email"
@@ -109,6 +113,7 @@
 
       <q-input
         color="secondary"
+        dense
         standout
         bottom-slots
         label="Password"
@@ -129,6 +134,7 @@
       </q-input>
       <q-input
         color="secondary"
+        dense
         standout
         bottom-slots
         label="Confirm Password"
@@ -159,7 +165,6 @@
           type="reset"
           color="grey-7"
           icon="close"
-          class="q-mr-lg"
         />
         <q-btn
           :loading="loading[1]"
@@ -168,6 +173,7 @@
           color="primary"
           standout
           label="Register"
+          class="q-ml-lg col"
         >
           <template v-slot:loading>
             <q-spinner-facebook class="on-left" />

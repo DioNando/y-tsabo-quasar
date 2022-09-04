@@ -41,6 +41,7 @@
       </div>
       <q-input
         color="secondary"
+        dense
         standout
         bottom-slots
         label="Email"
@@ -57,6 +58,7 @@
       </q-input>
       <q-input
         color="secondary"
+        dense
         standout
         bottom-slots
         label="Password"
@@ -83,6 +85,7 @@
           type="submit"
           color="primary"
           icon-right="login"
+          class="full-width"
         />
       </div>
     </q-form>
