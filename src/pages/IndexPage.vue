@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex column flex-center">
     <img
-      alt="Quasar logo"
+      alt="Y-Tsabo logo"
       src="~assets/Y-2.svg"
       class="q-mb-lg"
       style="width: 250px; height: 250px"

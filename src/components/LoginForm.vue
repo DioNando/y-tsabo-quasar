@@ -23,26 +23,26 @@
           appear
           enter-active-class="animated bounceIn slow"
         >
-          <q-icon
-            name="personal_injury"
-            color="accent"
-            size="8em"
+          <img
+            alt="Y-Tsabo logo"
+            src="~assets/Y-2.svg"
             class="q-mb-lg"
+            style="height: 10rem"
           />
         </transition>
-        <transition
+        <!-- <transition
           v-else-if="user.type === 'doctor'"
           appear
           enter-active-class="animated bounceIn slow"
         >
           <q-icon name="vaccines" color="primary" size="8em" class="q-mb-lg" />
-        </transition>
+        </transition> -->
         <div class="text-h4">Sign-in to continue</div>
       </div>
       <q-input
-        color="secondary"
+        color="grey"
         dense
-        standout
+        outlined
         bottom-slots
         label="Email"
         type="text"
@@ -57,9 +57,9 @@
         </template>
       </q-input>
       <q-input
-        color="secondary"
+        color="grey"
         dense
-        standout
+        outlined
         bottom-slots
         label="Password"
         type="password"
@@ -75,17 +75,25 @@
           <q-icon name="key" />
         </template>
       </q-input>
-      <div class="q-gutter-sm q-pb-lg">
+      <!-- <div class="q-gutter-sm q-pb-lg">
         <q-radio v-model="user.type" val="patient" label="Patient" />
         <q-radio v-model="user.type" val="doctor" label="Doctor" />
-      </div>
-      <div class="q-pb-lg" align="right">
+      </div> -->
+      <div class="q-py-lg flex justify-between">
+        <q-btn
+          outline
+          label="Back"
+          @click="this.router.push('/login')"
+          color="primary"
+          icon="chevron_left"
+          class="q-mr-lg"
+        />
         <q-btn
           label="Sign-in"
           type="submit"
           color="primary"
           icon-right="login"
-          class="full-width"
+          class="col"
         />
       </div>
     </q-form>
