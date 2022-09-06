@@ -1,14 +1,18 @@
 <template>
   <div>
-    <div 
-      class="flex flex-center" 
-      style="background-color: #fff; padding: 10px; width: fit-content; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 50%; cursor: pointer;"
+    <div
+      class="flex flex-center"
+      style="
+        background-color: #fff;
+        padding: 10px;
+        width: fit-content;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        border-radius: 50%;
+        cursor: pointer;
+      "
       @click="router.push(`/login`)"
     >
-      <q-icon 
-      name="arrow_back_ios"
-      size="3vh" 
-      style="font-weight: bold"/>
+      <q-icon name="arrow_back_ios" size="3vh" style="font-weight: bold" />
     </div>
     <q-form @submit="onSubmit" @reset="onReset">
       <div class="flex column q-my-lg flex-center">
@@ -35,9 +39,9 @@
         >
           <img
             alt="Y-Tsabo logo"
-            src="~assets/y-tsabo-logo.png"
-            class="q-mb-lg "
-            style="height: 2-5vh; width: 28vh;"
+            src="~assets/Untitled.png"
+            class="q-mb-lg"
+            style="width: 20vh"
           />
         </transition>
         <!-- <transition
@@ -47,11 +51,25 @@
         >
           <q-icon name="vaccines" color="primary" size="8em" class="q-mb-lg" />
         </transition> -->
-        <div class="text-h4" style="font-size: 24px; font-weight: 600; margin-left: -84%;">Login</div>
+        <div
+          class="text-h4"
+          style="
+            font-size: 24px;
+            font-weight: 600;
+            margin-left: -84%;
+            color: #757575;
+          "
+        >
+          Login
+        </div>
       </div>
       <q-input
         color="#817C7C"
-        style="background-color: #fff; border-color: #817C7C; border-radius: 10px;"
+        style="
+          background-color: #fff;
+          border-color: #817c7c;
+          border-radius: 10px;
+        "
         dense
         outlined
         bottom-slots
@@ -69,7 +87,11 @@
       </q-input>
       <q-input
         color="#817C7C"
-        style="background-color: #fff; border-color: #817C7C; border-radius: 10px;"
+        style="
+          background-color: #fff;
+          border-color: #817c7c;
+          border-radius: 10px;
+        "
         dense
         outlined
         bottom-slots
@@ -87,7 +109,11 @@
           <q-icon name="key" />
         </template>
       </q-input>
-      <p class="text-right"><a href="#" style="font-weight: 500; color: black">Forgot your password ?</a></p>
+      <p class="text-right">
+        <a href="#" style="font-weight: 500; color: black"
+          >Forgot your password ?</a
+        >
+      </p>
       <!-- <div class="q-gutter-sm q-pb-lg">
         <q-radio v-model="user.type" val="patient" label="Patient" />
         <q-radio v-model="user.type" val="doctor" label="Doctor" />
@@ -106,17 +132,16 @@
           type="submit"
           color="primary"
           class="col"
-          style="height: 45px; border-radius: 10px;"
+          style="height: 45px; border-radius: 10px"
         />
       </div>
     </q-form>
     <p class="text-center">
       Don't have an account,
-      <span 
-        style="font-weight: 600;" 
-        @click="router.push(`/register/patient`)"><u>Register-now !</u></span>
+      <span style="font-weight: 600" @click="router.push(`/register/patient`)"
+        ><u>Register-now !</u></span
+      >
     </p>
-
   </div>
 </template>
 
