@@ -1,10 +1,6 @@
 <template>
-  <q-page class="q-pa-lg flex column justify-between">
+  <q-page class="q-pa-lg flex column justify-between" style="padding: 39px">
     <LoginForm />
-    <div>
-      Don't have an account,
-      <span class="text-accent" @click="router.push(`/register/patient`)">register-now</span>
-    </div>
   </q-page>
 </template>
 

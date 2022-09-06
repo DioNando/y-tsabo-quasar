@@ -1,17 +1,33 @@
 <template>
   <q-layout view="hHh lpR fFf">
-    <q-header elevated class="bg-primary text-white">
-      <q-toolbar>
-        <q-toolbar-title class="flex justify-between items-center">
-          <q-avatar>
-            <img src="~assets/O-2.svg" />
-          </q-avatar>
-          <div>Y-TSABO</div>
-        </q-toolbar-title>
-
+    <div class="row" style="padding: 20px 20px 0 20px">
+      <div class="flex col">
+        <div
+          class="flex flex-center"
+          style="
+            background-color: #fff;
+            padding: 10px;
+            width: fit-content;
+            height: fit-content;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            border-radius: 50%;
+            cursor: pointer;
+          "
+          @click="router.push(`/login`)"
+        >
+          <img src="~assets/doctor-avatar.png" style="width: 20px" />
+        </div>
+        <div style="margin-left: 3%">
+          <p>
+            Hi John Doe ! <br />
+            How are you today ?
+          </p>
+        </div>
+      </div>
+      <div class="col-1">
         <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
-      </q-toolbar>
-    </q-header>
+      </div>
+    </div>
 
     <q-drawer show-if-above v-model="rightDrawerOpen" side="right">
       <SideBar />

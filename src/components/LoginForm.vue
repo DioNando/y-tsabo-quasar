@@ -1,7 +1,17 @@
 <template>
   <div>
+    <div 
+      class="flex flex-center" 
+      style="background-color: #fff; padding: 10px; width: fit-content; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 50%; cursor: pointer;"
+      @click="router.push(`/login`)"
+    >
+      <q-icon 
+      name="arrow_back_ios"
+      size="3vh" 
+      style="font-weight: bold"/>
+    </div>
     <q-form @submit="onSubmit" @reset="onReset">
-      <div class="flex column flex-center q-my-lg">
+      <div class="flex column q-my-lg flex-center">
         <!-- <transition appear enter-active-class="animated bounceIn">
           <q-icon
             v-if="user.type === 'patient'"
@@ -25,9 +35,9 @@
         >
           <img
             alt="Y-Tsabo logo"
-            src="~assets/Y-2.svg"
-            class="q-mb-lg"
-            style="height: 10rem"
+            src="~assets/y-tsabo-logo.png"
+            class="q-mb-lg "
+            style="height: 2-5vh; width: 28vh;"
           />
         </transition>
         <!-- <transition
@@ -37,14 +47,15 @@
         >
           <q-icon name="vaccines" color="primary" size="8em" class="q-mb-lg" />
         </transition> -->
-        <div class="text-h4">Sign-in to continue</div>
+        <div class="text-h4" style="font-size: 24px; font-weight: 600; margin-left: -84%;">Login</div>
       </div>
       <q-input
-        color="grey"
+        color="#817C7C"
+        style="background-color: #fff; border-color: #817C7C; border-radius: 10px;"
         dense
         outlined
         bottom-slots
-        label="Email"
+        label="Enter email"
         type="text"
         v-model="user.mail"
         autocomplete="off"
@@ -57,11 +68,12 @@
         </template>
       </q-input>
       <q-input
-        color="grey"
+        color="#817C7C"
+        style="background-color: #fff; border-color: #817C7C; border-radius: 10px;"
         dense
         outlined
         bottom-slots
-        label="Password"
+        label="Enter password"
         type="password"
         v-model="user.password"
         class="q-pb-lg"
@@ -75,28 +87,36 @@
           <q-icon name="key" />
         </template>
       </q-input>
+      <p class="text-right"><a href="#" style="font-weight: 500; color: black">Forgot your password ?</a></p>
       <!-- <div class="q-gutter-sm q-pb-lg">
         <q-radio v-model="user.type" val="patient" label="Patient" />
         <q-radio v-model="user.type" val="doctor" label="Doctor" />
       </div> -->
       <div class="q-py-lg flex justify-between">
-        <q-btn
+        <!-- <q-btn
           outline
           label="Back"
           @click="this.router.push('/login')"
           color="primary"
           icon="chevron_left"
           class="q-mr-lg"
-        />
+        /> -->
         <q-btn
-          label="Sign-in"
+          label="Login"
           type="submit"
           color="primary"
-          icon-right="login"
           class="col"
+          style="height: 45px; border-radius: 10px;"
         />
       </div>
     </q-form>
+    <p class="text-center">
+      Don't have an account,
+      <span 
+        style="font-weight: 600;" 
+        @click="router.push(`/register/patient`)"><u>Register-now !</u></span>
+    </p>
+
   </div>
 </template>
 
