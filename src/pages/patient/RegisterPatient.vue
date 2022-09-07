@@ -190,7 +190,7 @@
               v-if="step == 1"
               outline
               label="Back"
-              @click="this.router.push('/login/doctor')"
+              @click="this.router.push('/login/patient')"
               color="primary"
               icon="chevron_left"
               class="q-mr-lg"

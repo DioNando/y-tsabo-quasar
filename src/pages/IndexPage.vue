@@ -2,9 +2,9 @@
   <q-page class="flex column flex-center">
     <img
       alt="Y-Tsabo logo"
-      src="~assets/Y-2.svg"
+      src="~assets/Untitled.png"
       class="q-mb-lg"
-      style="width: 250px; height: 250px"
+      style="height: 250px"
     />
     <q-spinner-facebook
         color="primary"
