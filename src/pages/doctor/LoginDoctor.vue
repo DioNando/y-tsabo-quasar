@@ -1,9 +1,11 @@
 <template>
-  <q-page class="q-pa-lg flex column justify-between">
+  <q-page class="q-pa-lg flex column justify-start">
     <LoginForm />
-    <div>
+    <div class="text-center">
       Don't have an account,
-      <span class="text-accent" @click="router.push(`/register/doctor`)">register-now</span>
+      <span class="text-accent" @click="router.push(`/register/doctor`)"
+        >register-now !</span
+      >
     </div>
   </q-page>
 </template>
