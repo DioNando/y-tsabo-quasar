@@ -31,12 +31,30 @@ const routes = [
   {
     path: "/doctor",
     component: () => import("layouts/DoctorLayout.vue"),
-    children: [{ path: "dashboard", component: () => import("pages/doctor/DashboardDoctor.vue") }],
+    children: [
+      {
+        path: "dashboard",
+        component: () => import("pages/doctor/DashboardDoctor.vue"),
+      },
+    ],
   },
   {
     path: "/patient",
     component: () => import("layouts/PatientLayout.vue"),
-    children: [{ path: "dashboard", component: () => import("pages/patient/DashboardPatient.vue") }],
+    children: [
+      {
+        path: "dashboard",
+        component: () => import("pages/patient/DashboardPatient.vue"),
+      },
+      {
+        path: "appointments",
+        component: () => import("pages/patient/AppointmentsPatient.vue"),
+      },
+      {
+        path: "add-appointment",
+        component: () => import("pages/patient/AddAppointment.vue"),
+      },
+    ],
   },
   // PAGE ERROR 404
   {
