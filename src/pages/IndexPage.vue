@@ -1,10 +1,10 @@
 <template>
   <q-page class="flex column flex-center">
     <img
-      alt="Quasar logo"
-      src="~assets/Y-2.svg"
+      alt="Y-Tsabo logo"
+      src="~assets/Untitled.png"
       class="q-mb-lg"
-      style="width: 250px; height: 250px"
+      style="height: 250px"
     />
     <q-spinner-facebook
         color="primary"

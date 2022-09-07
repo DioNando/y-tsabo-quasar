@@ -3,16 +3,16 @@
 </style>
 <template>
   <q-page class="q-pa-lg flex column">
-    <DashboardHeader></DashboardHeader>
-    <DashboardContainer></DashboardContainer>
+    <AppointmentsHeader></AppointmentsHeader>
+    <AppointmentsContent></AppointmentsContent>
   </q-page>
 </template>
 
 <script>
 import { useQuasar } from "quasar";
 import { useRouter } from "vue-router";
-import DashboardHeader from "../../components/patient/Dashboard/DashboardHeader.vue";
-import DashboardContainer from "../../components/patient/Dashboard/DashboardContainer.vue";
+import AppointmentsHeader from "src/components/patient/Appointments/AppointmentsHeader.vue";
+import AppointmentsContent from "src/components/patient/Appointments/AppointmentsContent.vue";
 
 export default {
   name: "IndexPage",
@@ -34,6 +34,6 @@ export default {
       this.timer = void 0;
     });
   },
-  components: { DashboardHeader, DashboardContainer },
+  components: { AppointmentsHeader, AppointmentsContent },
 };
 </script>

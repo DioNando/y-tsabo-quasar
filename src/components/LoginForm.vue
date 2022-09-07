@@ -1,7 +1,8 @@
 <template>
   <div>
+    <q-btn round class="text-grey-7" icon="chevron_left" @click="router.push(`/login`)"/>
     <q-form @submit="onSubmit" @reset="onReset">
-      <div class="flex column flex-center q-my-lg">
+      <div class="flex column q-my-lg flex-center">
         <!-- <transition appear enter-active-class="animated bounceIn">
           <q-icon
             v-if="user.type === 'patient'"
@@ -23,28 +24,32 @@
           appear
           enter-active-class="animated bounceIn slow"
         >
-          <q-icon
-            name="personal_injury"
-            color="accent"
-            size="8em"
+          <img
+            alt="Y-Tsabo logo"
+            src="~assets/Untitled.png"
             class="q-mb-lg"
+            style="width: 20vh"
           />
         </transition>
-        <transition
+        <!-- <transition
           v-else-if="user.type === 'doctor'"
           appear
           enter-active-class="animated bounceIn slow"
         >
           <q-icon name="vaccines" color="primary" size="8em" class="q-mb-lg" />
-        </transition>
-        <div class="text-h4">Sign-in to continue</div>
+        </transition> -->
+        <div
+          class="text-h5 self-start"
+        >
+          Login to your account
+        </div>
       </div>
       <q-input
-        color="secondary"
+        color="primary"
         dense
-        standout
+        outlined
         bottom-slots
-        label="Email"
+        label="Enter email"
         type="text"
         v-model="user.mail"
         autocomplete="off"
@@ -57,11 +62,11 @@
         </template>
       </q-input>
       <q-input
-        color="secondary"
+        color="primary"
         dense
-        standout
+        outlined
         bottom-slots
-        label="Password"
+        label="Enter password"
         type="password"
         v-model="user.password"
         class="q-pb-lg"
@@ -75,20 +80,34 @@
           <q-icon name="key" />
         </template>
       </q-input>
-      <div class="q-gutter-sm q-pb-lg">
+      <!-- <div class="q-gutter-sm q-pb-lg">
         <q-radio v-model="user.type" val="patient" label="Patient" />
         <q-radio v-model="user.type" val="doctor" label="Doctor" />
-      </div>
-      <div class="q-pb-lg" align="right">
+      </div> -->
+      <div class="q-py-lg flex justify-between">
+        <!-- <q-btn
+          outline
+          label="Back"
+          @click="this.router.push('/login')"
+          color="primary"
+          icon="chevron_left"
+          class="q-mr-lg"
+        /> -->
         <q-btn
-          label="Sign-in"
+          label="Login"
           type="submit"
           color="primary"
-          icon-right="login"
           class="full-width"
+          icon-right="login"
         />
       </div>
     </q-form>
+    <!-- <p class="text-center">
+      Don't have an account,
+      <span @click="router.push(`/register/patient`)"
+        ><u>Register-now !</u></span
+      >
+    </p> -->
   </div>
 </template>
 
