@@ -44,6 +44,7 @@
           <q-icon name="vaccines" color="primary" size="8em" class="q-mb-lg" />
         </transition> -->
         <div class="text-h6 self-start">Login to your account</div>
+
       </div>
       <q-input
         color="primary"
