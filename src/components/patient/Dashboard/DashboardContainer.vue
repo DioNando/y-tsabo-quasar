@@ -21,6 +21,7 @@
           background-color: #b5e8e5;
           text-transform: capitalize;
         "
+        @click="router.push(`appointments`)"
       />
     </div>
     <div class="col flex flex-center">
@@ -88,9 +89,8 @@
             height: fit-content;
             box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
             border-radius: 10px;
-            cursor: pointer;
           "
-          @click="router.push(`#`)"
+          @click="router.push(`/patient/add-appointment`)"
         >
           <q-icon
             name="arrow_forward_ios"
@@ -114,7 +114,7 @@
       <div class="col">
         <p style="font-weight: 500">
           Explore <br />
-          patients list
+          doctor list
         </p>
       </div>
       <div class="col-2">
@@ -129,7 +129,7 @@
             border-radius: 10px;
             cursor: pointer;
           "
-          @click="router.push(`#`)"
+          @click="router.push(`/patient/doctor-list`)"
         >
           <q-icon
             name="arrow_forward_ios"
@@ -149,7 +149,7 @@
       "
     >
       <div class="col">
-        <p style="font-weight: 500">Explore all doctors</p>
+        <p style="font-weight: 500">Need help ?</p>
       </div>
       <div class="col-2">
         <div

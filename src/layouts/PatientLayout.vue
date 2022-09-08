@@ -2,6 +2,14 @@
   <q-layout view="hHh lpR fFf">
     <div class="row" style="padding: 20px 20px 0 20px">
       <div class="flex col">
+        <div>
+          <!-- <q-btn
+            round
+            class="text-grey-7"
+            icon="chevron_left"
+            @click="router.push(`/login`)"
+          /> -->
+        </div>
         <div
           class="flex flex-center"
           style="

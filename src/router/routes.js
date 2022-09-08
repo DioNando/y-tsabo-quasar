@@ -54,6 +54,10 @@ const routes = [
         path: "add-appointment",
         component: () => import("pages/patient/AddAppointment.vue"),
       },
+      {
+        path: "doctor-list",
+        component: () => import("pages/patient/DoctorList.vue"),
+      },
     ],
   },
   // PAGE ERROR 404
