@@ -1,52 +1,96 @@
 <template>
-  <div
-    class="row"
-    style="
-      background-color: rgba(181, 232, 229, 0.35);
-      margin-top: 6%;
-      padding: 20px;
-      border-radius: 10px;
-    "
-  >
-    <div class="col" style="height: 125px">
-      <div class="flex">
-        <q-icon name="calendar_month" size="1.75rem" style="color: #60a09a" />
-        <p style="font-size: 16px; font-weight: 500; margin-left: 5%">
-          03/09/2022
-        </p>
-      </div>
-      <div class="flex">
-        <q-icon name="calendar_month" size="1.75rem" style="color: #60a09a" />
-        <p style="font-size: 16px; margin-left: 5%">09 : 00 AM</p>
-      </div>
-      <div class="flex">
-        <q-icon
-          name="medication_liquid"
-          size="1.75rem"
-          style="color: #60a09a"
-        />
-        <p style="font-size: 16px; margin-left: 5%">Dr John Doe</p>
-      </div>
-    </div>
-    <div class="col flex justify-end items-center">
-      <q-icon name="cancel" size="1.75rem" style="color: #bc0066" />
-    </div>
-  </div>
+  <q-page class="q-pt-lg">
+    <q-card
+      class="q-mb-md"
+      flat
+      style="background-color: rgba(181, 232, 229, 0.35)"
+      v-for="(user, index) in users"
+      :key="index"
+    >
+      <q-card-actions class="fit flex items-center justify-between">
+        <q-btn flat round icon="list" />
+        <q-fab
+          color="warning"
+          text-color="black"
+          icon="more_horiz"
+          direction="left"
+          padding="xs"
+          flat
+        >
+          <q-fab-action
+            color="grey-3"
+            text-color="black"
+            @click="onClick"
+            icon="delete"
+            padding="xs"
+            flat
+          />
+          <q-fab-action
+            color="grey-3"
+            text-color="black"
+            @click="onClick"
+            icon="folder_open"
+            padding="xs"
+            flat
+          />
+        </q-fab>
+      </q-card-actions>
+      <q-separator />
+      <q-card-section class="q-pa-sm">
+        <div class="fit flex items-center q-gutter-x-sm">
+          <q-btn flat round icon="medication_liquid" />
+          <div>Dr {{ user.firstName }}</div>
+        </div>
+        <div class="fit flex items-center q-gutter-x-sm">
+          <q-btn flat round icon="event" />
+          <div>03/09/2022</div>
+        </div>
+        <div class="fit flex items-center q-gutter-x-sm">
+          <q-btn flat round icon="schedule" />
+          <div>7:00PM</div>
+        </div>
+        <!-- <div>
+          <q-btn round color="warning" size="0.75rem" icon="close" />
+        </div> -->
+      </q-card-section>
+    </q-card>
+  </q-page>
 </template>
 
 <script>
+import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 export default {
   name: "AppointmentsContent",
   components: {},
   data() {
-    return {};
+    return {
+      items: [{ message: "Foo" }, { message: "Bar" }],
+    };
   },
   setup() {
     const router = useRouter();
 
-    return { router };
+    const users = ref([
+      {
+        firstName: "Frank",
+      },
+      {
+        firstName: "Vic",
+      },
+      {
+        firstName: "Gina",
+      },
+      {
+        firstName: "Jessi",
+      },
+      {
+        firstName: "Jay",
+      },
+    ]);
+
+    return { router, users };
   },
   methods: {},
 };

@@ -1,10 +1,12 @@
-<style>
-@import "../../css/dashboardPatient.scss";
-</style>
 <template>
-  <q-page class="q-pa-lg flex column">
-    <AppointmentsHeader></AppointmentsHeader>
-    <AppointmentsContent></AppointmentsContent>
+  <q-page class="q-pa-lg q-pt-none">
+    <AppointmentsHeader />
+    <AppointmentsContent />
+    <div>
+      <q-page-sticky position="bottom-right" :offset="[18, 18]">
+        <q-btn fab icon="add" color="primary" @click="router.push(`add-appointment`)" />
+      </q-page-sticky>
+    </div>
   </q-page>
 </template>
 
@@ -37,3 +39,7 @@ export default {
   components: { AppointmentsHeader, AppointmentsContent },
 };
 </script>
+
+<!-- <style>
+@import "../../css/dashboardPatient.scss";
+</style> -->

@@ -1,5 +1,8 @@
 <template>
-  <div class="row justify-between" style="margin-top: -3%">
+  <div class="text-h5">
+    Appointments
+  </div>
+  <!-- <div class="row justify-between" style="margin-top: -3%">
     <div class="col flex align-center" style="padding-top: 3px">
       <p style="font-size: 24px; font-weight: 600">Appointments</p>
     </div>
@@ -16,7 +19,7 @@
         <q-icon name="add" size="1.5rem" style="color: white" />
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>
