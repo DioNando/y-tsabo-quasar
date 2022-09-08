@@ -2,20 +2,27 @@
   <q-layout view="hHh lpR fFf">
     <div class="row" style="padding: 20px 20px 0 20px">
       <div class="flex col">
+        <div>
+          <!-- <q-btn
+            round
+            class="text-grey-7"
+            icon="chevron_left"
+            @click="router.push(`/login`)"
+          /> -->
+        </div>
         <div
           class="flex flex-center"
           style="
             background-color: #fff;
-            padding: 10px;
+            padding: 5px;
             width: fit-content;
             height: fit-content;
             box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
             border-radius: 50%;
-            cursor: pointer;
           "
           @click="router.push(`/login`)"
         >
-          <img src="~assets/doctor-avatar.png" style="width: 20px" />
+          <img src="~assets/patient-avatar.png" style="height: 4vh" />
         </div>
         <div style="margin-left: 3%">
           <p>

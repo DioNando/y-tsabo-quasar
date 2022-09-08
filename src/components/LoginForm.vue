@@ -1,6 +1,11 @@
 <template>
   <div>
-    <q-btn round class="text-grey-7" icon="chevron_left" @click="router.push(`/login`)"/>
+    <q-btn
+      round
+      class="text-grey-7"
+      icon="chevron_left"
+      @click="router.push(`/login`)"
+    />
     <q-form @submit="onSubmit" @reset="onReset">
       <div class="flex column q-my-lg flex-center">
         <!-- <transition appear enter-active-class="animated bounceIn">
@@ -38,11 +43,8 @@
         >
           <q-icon name="vaccines" color="primary" size="8em" class="q-mb-lg" />
         </transition> -->
-        <div
-          class="text-h5 self-start"
-        >
-          Login to your account
-        </div>
+        <div class="text-h6 self-start">Login to your account</div>
+
       </div>
       <q-input
         color="primary"
