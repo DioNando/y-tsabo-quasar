@@ -1,19 +1,19 @@
 <template>
   <q-page class="q-pt-lg">
     <q-card
-      class="q-mb-md"
+      class="q-mb-md flex items-start justify-between"
       flat
       style="background-color: rgba(181, 232, 229, 0.35)"
       v-for="(user, index) in users"
       :key="index"
     >
-      <q-card-actions class="fit flex items-center justify-between">
+      <!-- <q-card-actions class="fit flex items-center justify-between">
         <q-btn flat round icon="list" />
         <q-fab
           color="warning"
           text-color="black"
           icon="more_horiz"
-          direction="left"
+          direction="up"
           padding="xs"
           flat
         >
@@ -35,24 +35,52 @@
           />
         </q-fab>
       </q-card-actions>
-      <q-separator />
+      <q-separator /> -->
       <q-card-section class="q-pa-sm">
-        <div class="fit flex items-center q-gutter-x-sm">
+        <div class="flex items-center q-gutter-x-sm">
           <q-btn flat round icon="medication_liquid" />
           <div>Dr {{ user.firstName }}</div>
         </div>
-        <div class="fit flex items-center q-gutter-x-sm">
+        <div class="flex items-center q-gutter-x-sm">
           <q-btn flat round icon="event" />
           <div>03/09/2022</div>
         </div>
-        <div class="fit flex items-center q-gutter-x-sm">
+        <div class="flex items-center q-gutter-x-sm">
           <q-btn flat round icon="schedule" />
           <div>7:00PM</div>
         </div>
+
         <!-- <div>
           <q-btn round color="warning" size="0.75rem" icon="close" />
         </div> -->
       </q-card-section>
+      <div class="q-pa-sm">
+        <q-fab
+          color="warning"
+          text-color="black"
+          icon="more_horiz"
+          direction="down"
+          padding="xs"
+          flat
+        >
+          <q-fab-action
+            color="grey-3"
+            text-color="black"
+            @click="onClick"
+            icon="delete"
+            padding="xs"
+            flat
+          />
+          <q-fab-action
+            color="grey-3"
+            text-color="black"
+            @click="onClick"
+            icon="folder_open"
+            padding="xs"
+            flat
+          />
+        </q-fab>
+      </div>
     </q-card>
   </q-page>
 </template>

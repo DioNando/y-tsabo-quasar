@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">y-tsabo-quasar</string>
+    <string name="title_activity_main">y-tsabo-quasar</string>
+    <string name="package_name">com.ytsabo.app</string>
+    <string name="custom_url_scheme">com.ytsabo.app</string>
+</resources>

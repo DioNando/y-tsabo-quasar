@@ -3,7 +3,7 @@
     <AppointmentsHeader />
     <AppointmentsContent />
     <div>
-      <q-page-sticky position="bottom-right" :offset="[18, 18]">
+      <q-page-sticky position="bottom-right" :offset="[18, 18]" style="z-index: 1000">
         <q-btn fab icon="add" color="primary" @click="router.push(`add-appointment`)" />
       </q-page-sticky>
     </div>
