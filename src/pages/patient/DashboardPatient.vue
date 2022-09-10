@@ -1,7 +1,7 @@
 <template>
-  <q-page class="q-pa-lg flex column">
-    <DashboardHeader></DashboardHeader>
-    <DashboardContainer></DashboardContainer>
+  <q-page class="q-pa-lg flex column justify-between">
+    <DashboardHeader />
+    <DashboardContainer />
   </q-page>
 </template>
 
@@ -12,7 +12,8 @@ import DashboardHeader from "../../components/patient/Dashboard/DashboardHeader.
 import DashboardContainer from "../../components/patient/Dashboard/DashboardContainer.vue";
 
 export default {
-  name: "IndexPage",
+  name: "DashboardPatient",
+  components: { DashboardHeader, DashboardContainer },
   data() {
     return {};
   },
@@ -31,7 +32,6 @@ export default {
       this.timer = void 0;
     });
   },
-  components: { DashboardHeader, DashboardContainer },
 };
 </script>
 

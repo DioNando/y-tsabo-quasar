@@ -206,6 +206,7 @@
             />
             <q-btn
               @click="$refs.stepper.next()"
+              unelevated
               color="primary"
               :label="step === 3 ? 'Register' : 'Continue'"
               class="col"

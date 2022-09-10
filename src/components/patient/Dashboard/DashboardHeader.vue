@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="row justify-between" style="margin-top: -3%">
     <div class="col">
       <q-input
@@ -37,11 +37,21 @@
       </div>
     </div>
   </div>
+</template> -->
+
+<template>
+  <div class="flex no-wrap items-stretch justify-between">
+    <q-input v-model="search" bg-color="grey-2" outlined dense type="search" class="fit q-mr-lg">
+      <template v-slot:prepend>
+        <q-icon name="search" />
+      </template>
+    </q-input>
+    <q-btn color="primary" unelevated icon="tune" />
+  </div>
 </template>
 
 <script>
 import { useRouter } from "vue-router";
-import SideBarRight from "../SideBarRight.vue";
 
 export default {
   name: "DashboardHeader",

@@ -4,7 +4,7 @@
       round
       class="text-grey-7"
       icon="chevron_left"
-      @click="router.push(`/login`)"
+      @click="router.go(-1)"
     />
     <q-form @submit="onSubmit" @reset="onReset">
       <div class="flex column q-my-lg flex-center">
