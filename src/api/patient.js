@@ -1,29 +1,29 @@
 import axios from "axios";
 import { BASE_URL } from "../configs";
 
-const URL = BASE_URL + "/doctor";
-const URL_AUTH = BASE_URL + "/auth-doctor/local"
+const URL = BASE_URL + "/patient";
+const URL_AUTH = BASE_URL + "/auth-patient/local"
 
-export const loginDoctor = (data) => {
+export const loginPatient = (data) => {
   return axios.post(`${URL_AUTH}/signin`, data);
 };
 
-export const registerDoctor = (data) => {
+export const registerPatient = (data) => {
   return axios.post(`${URL_AUTH}/signup`, data);
 };
 
-export const getAllDoctors = () => {
+export const getAllPatients = () => {
   return axios.get(`${URL}`);
 };
 
-export const getDoctor = (id) => {
+export const getPatient = (id) => {
   return axios.get(`${URL}/${id}`);
 };
 
-export const updateDoctor = (id, data) => {
+export const updatePatient = (id, data) => {
   return axios.put(`${URL}/${id}`, data);
 };
 
-export const deleteDoctor = (id) => {
+export const deletePatient = (id) => {
   return axios.delete(`${URL}/${id}`);
 };

@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-pa-lg flex column justify-start">
-    <LoginForm />
+    <LoginForm userType="doctor" />
     <div class="text-center">
       Don't have an account,
       <span class="text-accent" @click="router.push(`/register/doctor`)"

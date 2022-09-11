@@ -4,7 +4,7 @@
       <q-img src="~assets/img/doctorSideBar.png">
         <div class="text-h6 absolute-top text-left" style="height: 100%">
           <q-icon name="vaccines" color="white" size="2em" class="q-mb-sm" />
-          <div>Doctor Name</div>
+          <div>{{ meDoctor.firstnameDoctor }}</div>
         </div>
       </q-img>
     </q-card>
@@ -25,6 +25,13 @@ export default {
 
     return { router };
   },
-  methods: {},
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters["doctorStore/isLoggedIn"];
+    },
+    meDoctor() {
+      return this.$store.getters["doctorStore/meDoctor"];
+    },
+  },
 };
 </script>
