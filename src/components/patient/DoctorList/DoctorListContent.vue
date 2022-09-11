@@ -65,6 +65,7 @@
 
 <script>
 import { useRouter } from "vue-router";
+import { getAllDoctors } from "src/api/doctor";
 
 export default {
   name: "DoctorListContent",
@@ -73,6 +74,14 @@ export default {
     return {};
   },
   setup() {
+    getAllDoctors()
+      .then((result) => {
+        rows.value = result.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
     const router = useRouter();
 
     return { router };

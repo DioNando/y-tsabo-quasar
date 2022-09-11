@@ -6,29 +6,9 @@
       icon="chevron_left"
       @click="router.go(-1)"
     />
-    <q-form @submit="onSubmit" @reset="onReset">
+    <q-form @submit="onSubmit">
       <div class="flex column q-my-lg flex-center">
-        <!-- <transition appear enter-active-class="animated bounceIn">
-          <q-icon
-            v-if="user.type === 'patient'"
-            name="personal_injury"
-            color="accent"
-            size="10em"
-            class="q-mb-lg"
-          />
-          <q-icon
-            v-else-if="user.type === 'doctor'"
-            name="vaccines"
-            color="primary"
-            size="10em"
-            class="q-mb-lg"
-          />
-        </transition> -->
-        <transition
-          v-if="user.type === 'patient'"
-          appear
-          enter-active-class="animated bounceIn slow"
-        >
+        <transition appear enter-active-class="animated bounceIn slow">
           <img
             alt="Y-Tsabo logo"
             src="~assets/Untitled.png"
@@ -36,15 +16,7 @@
             style="width: 20vh"
           />
         </transition>
-        <!-- <transition
-          v-else-if="user.type === 'doctor'"
-          appear
-          enter-active-class="animated bounceIn slow"
-        >
-          <q-icon name="vaccines" color="primary" size="8em" class="q-mb-lg" />
-        </transition> -->
         <div class="text-h6 self-start">Login to your account</div>
-
       </div>
       <q-input
         color="primary"
@@ -53,7 +25,7 @@
         bottom-slots
         label="Enter email"
         type="text"
-        v-model="user.mail"
+        v-model="user.email"
         autocomplete="off"
         class="q-pb-lg"
         lazy-rules
@@ -82,19 +54,7 @@
           <q-icon name="key" />
         </template>
       </q-input>
-      <!-- <div class="q-gutter-sm q-pb-lg">
-        <q-radio v-model="user.type" val="patient" label="Patient" />
-        <q-radio v-model="user.type" val="doctor" label="Doctor" />
-      </div> -->
       <div class="q-py-lg flex justify-between">
-        <!-- <q-btn
-          outline
-          label="Back"
-          @click="this.router.push('/login')"
-          color="primary"
-          icon="chevron_left"
-          class="q-mr-lg"
-        /> -->
         <q-btn
           label="Login"
           type="submit"
@@ -104,28 +64,34 @@
         />
       </div>
     </q-form>
-    <!-- <p class="text-center">
-      Don't have an account,
-      <span @click="router.push(`/register/patient`)"
-        ><u>Register-now !</u></span
-      >
-    </p> -->
   </div>
 </template>
 
 <script>
 import { useQuasar } from "quasar";
 import { useRouter } from "vue-router";
+import { loginDoctor } from "src/api/doctor";
+import { loginPatient } from "src/api/patient";
 
 export default {
   name: "LoginForm",
+  props: {
+    userType: String,
+  },
   components: {},
   data() {
     return {
       user: {
-        mail: "",
+        email: "",
         password: "",
-        type: "patient",
+      },
+      doctor: {
+        emailDoctor: "",
+        passwordDoctor: "",
+      },
+      patient: {
+        emailPatient: "",
+        passwordPatient: "",
       },
     };
   },
@@ -136,19 +102,62 @@ export default {
     return { router, toast };
   },
   methods: {
-    onSubmit() {
-      if (this.user.type === "patient") {
-        this.router.push("/patient/dashboard");
+    async onSubmit() {
+      if (this.userType === "patient") {
+        this.patient.emailPatient = this.user.email;
+        this.patient.passwordPatient = this.user.password;
+        await loginPatient(this.patient)
+          .then((result) => {
+            localStorage.setItem("token", result.data[1].access_token);
+            this.$store.dispatch("patientStore/setPatient", result.data[0]);
+            this.$store.dispatch("patientStore/setConnected");
+            this.toast.notify({
+              color: "positive",
+              textColor: "white",
+              icon: "waving_hand",
+              message: `Nice to see you, ${result.data[0].firstnamePatient}`,
+              position: "top",
+            });
+            this.router.push("/patient/dashboard");
+          })
+          .catch((error) => {
+            this.toast.notify({
+              color: "negative",
+              textColor: "white",
+              icon: "warning",
+              message: `Error`,
+              position: "top",
+            });
+            console.log(error);
+          });
       } else {
-        this.router.push("/doctor/dashboard");
+        this.doctor.emailDoctor = this.user.email;
+        this.doctor.passwordDoctor = this.user.password;
+        await loginDoctor(this.doctor)
+          .then((result) => {
+            localStorage.setItem("token", result.data[1].access_token);
+            this.$store.dispatch("doctorStore/setDoctor", result.data[0]);
+            this.$store.dispatch("doctorStore/setConnected");
+            this.toast.notify({
+              color: "positive",
+              textColor: "white",
+              icon: "waving_hand",
+              message: `Nice to see you, Dr ${result.data[0].firstnameDoctor}`,
+              position: "top",
+            });
+            this.router.push("/doctor/dashboard");
+          })
+          .catch((error) => {
+            this.toast.notify({
+              color: "negative",
+              textColor: "white",
+              icon: "warning",
+              message: `Error`,
+              position: "top",
+            });
+            console.log(error);
+          });
       }
-      this.toast.notify({
-        color: "positive",
-        textColor: "white",
-        icon: "waving_hand",
-        message: "Nice to see you, " + this.user.mail,
-        position: "top",
-      });
     },
   },
 };

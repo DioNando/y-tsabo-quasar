@@ -78,7 +78,7 @@
         class="q-pa-md items-explore flex no-wrap items-center justify-between"
       >
         <div class="cut-text">Explore doctor list</div>
-        <q-btn round color="grey-1" class="text-black" icon="chevron_right" size="sm" />
+        <q-btn round color="grey-1" class="text-black" icon="chevron_right" size="sm" @click="router.push(`doctor-list`)" />
       </q-card>
       <q-card
         flat
