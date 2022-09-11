@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <q-form>
+    <q-form @submit="onSubmit" @reset="onReset">
       <q-stepper
         v-model="step"
         ref="stepper"
@@ -18,7 +18,7 @@
             bottom-slots
             label="Name"
             type="text"
-            v-model="doctor.firstnameDoctor"
+            v-model="patient.name"
             autocomplete="off"
             class="q-pb-lg"
             lazy-rules
@@ -37,7 +37,7 @@
             bottom-slots
             label="Firstname"
             type="text"
-            v-model="doctor.lastnameDoctor"
+            v-model="patient.firstname"
             autocomplete="off"
             class="q-pb-lg"
             lazy-rules
@@ -47,45 +47,6 @@
           >
             <template v-slot:prepend>
               <q-icon name="person" />
-            </template>
-          </q-input>
-          <q-input
-            color="grey"
-            dense
-            outlined
-            bottom-slots
-            label="Phone Number"
-            mask="### ## ### ##"
-            type="text"
-            v-model="doctor.phoneDoctor"
-            autocomplete="off"
-            class="q-pb-lg"
-            lazy-rules
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please enter your phone number',
-            ]"
-          >
-            <template v-slot:prepend>
-              <q-icon name="call" />
-            </template>
-          </q-input>
-          <q-input
-            color="grey"
-            dense
-            outlined
-            bottom-slots
-            label="Address"
-            type="text"
-            v-model="doctor.addressDoctor"
-            autocomplete="off"
-            class="q-pb-lg"
-            lazy-rules
-            :rules="[
-              (val) => (val && val.length > 0) || 'Please enter your address',
-            ]"
-          >
-            <template v-slot:prepend>
-              <q-icon name="location_on" />
             </template>
           </q-input>
         </q-step>
@@ -99,8 +60,8 @@
             bottom-slots
             label="Id Doctor"
             type="text"
-            mask="############"
-            v-model="doctor.matriculeDoctor"
+            mask="### ### ### ###"
+            v-model="patient.idNumber"
             autocomplete="off"
             class="q-pb-lg"
           >
@@ -111,7 +72,7 @@
           <q-select
             outlined
             dense
-            v-model="doctor.speciality"
+            v-model="patient.speciality"
             :options="options"
             label="Speciality"
             class="q-pb-lg"
@@ -120,13 +81,14 @@
               <q-icon name="vaccines" />
             </template>
           </q-select>
-          <!-- <q-input
+          <q-input
+            v-model="patient.description"
             label="Description"
             outlined
             dense
             type="textarea"
             class="q-pb-lg"
-          /> -->
+          />
         </q-step>
 
         <q-step :name="3" icon="key">
@@ -138,7 +100,7 @@
             bottom-slots
             label="Email"
             type="text"
-            v-model="doctor.emailDoctor"
+            v-model="patient.mail"
             autocomplete="off"
             class="q-pb-lg"
             lazy-rules
@@ -157,7 +119,7 @@
             bottom-slots
             label="Password"
             type="password"
-            v-model="doctor.passwordDoctor"
+            v-model="patient.password"
             class="q-pb-lg"
             autocomplete="off"
             lazy-rules
@@ -178,13 +140,13 @@
             bottom-slots
             label="Confirm Password"
             type="password"
-            v-model="doctor.passwordConfirm"
+            v-model="patient.passwordConfirm"
             class="q-pb-lg"
             autocomplete="off"
             lazy-rules
             :rules="[
               (val) =>
-                (val && val == doctor.passwordDoctor) ||
+                (val && val == patient.password) ||
                 'Your password don\'t match',
             ]"
           >
@@ -193,7 +155,7 @@
             </template>
           </q-input>
           <q-toggle
-            v-model="doctor.accept"
+            v-model="patient.accept"
             label="I accept the license and terms"
             color="accent"
             class="q-pb-sm"
@@ -203,20 +165,25 @@
         <template v-slot:navigation>
           <q-stepper-navigation class="q-pb-lg flex justify-between">
             <q-btn
+              v-if="step == 1"
               outline
               label="Back"
-              @click="
-                step === 1
-                  ? this.router.push('/login/doctor')
-                  : $refs.stepper.previous()
-              "
+              @click="this.router.push('/login/doctor')"
               color="primary"
               icon="chevron_left"
               class="q-mr-lg"
             />
             <q-btn
-              @click="step === 3 ? onSubmit() : $refs.stepper.next()"
-              unelevated
+              v-if="step > 1"
+              outline
+              color="primary"
+              @click="$refs.stepper.previous()"
+              label="Back"
+              icon="chevron_left"
+              class="q-mr-lg"
+            />
+            <q-btn
+              @click="$refs.stepper.next()"
               color="primary"
               :label="step === 3 ? 'Register' : 'Continue'"
               class="col"
@@ -232,31 +199,31 @@
 import { ref } from "vue";
 import { useQuasar } from "quasar";
 import { useRouter } from "vue-router";
-import { registerDoctor } from "src/api/doctor";
 
 export default {
   name: "RegisterDoctor",
   components: {},
   data() {
     return {
-      doctor: {
-        firstnameDoctor: "",
-        lastnameDoctor: "",
-        matriculeDoctor: "",
-        emailDoctor: "",
-        speciality: [],
-        addressDoctor: "",
-        phoneDoctor: "",
-        passwordDoctor: "",
+      patient: {
+        name: "",
+        firstname: "",
+        age: "",
+        idDoctor: "",
+        speciality: "",
+        description: "",
+        mail: "",
+        password: "",
         passwordConfirm: "",
+        gender: "man",
         accept: false,
       },
       options: [
-        { label: "Generalist", value: "1" },
-        { label: "Surgeon", value: "2" },
-        { label: "Pediatrician", value: "3" },
-        { label: "Ophthalmologist", value: "4" },
-        { label: "Psychologist", value: "5" },
+        "Generalist",
+        "Surgeon",
+        "Pediatrician",
+        "Ophthalmologist",
+        "Psychologist",
       ],
     };
   },
@@ -271,6 +238,7 @@ export default {
       loading.value[number] = true;
       setTimeout(() => {
         loading.value[number] = false;
+        router.push("/");
         toast.notify({
           color: "positive",
           textColor: "white",
@@ -278,7 +246,6 @@ export default {
           message: "Your profile has been created, sign-in to continue",
           position: "top",
         });
-        router.push("/");
         timer = void 0;
       }, 1500);
     }
@@ -294,8 +261,8 @@ export default {
     };
   },
   methods: {
-    async onSubmit() {
-      if (this.doctor.accept !== true) {
+    onSubmit() {
+      if (this.patient.accept !== true) {
         this.toast.notify({
           color: "negative",
           textColor: "white",
@@ -304,24 +271,20 @@ export default {
           position: "top",
         });
       } else {
-        this.doctor.speciality = this.doctor.speciality.value
-        console.log(this.doctor);
-        await registerDoctor(this.doctor)
-          .then(() => {
-            this.simulateProgress(1);
-          })
-          .catch((error) => {
-            this.toast.notify({
-              color: "negative",
-              textColor: "white",
-              icon: "warning",
-              message: "Error",
-              position: "top",
-            });
-            console.log(error);
-          });
+        this.simulateProgress(1);
       }
     },
+
+    // onReset() {
+    //   this.patient.name = "";
+    //   this.patient.age = "";
+    //   this.patient.idNumber = "";
+    //   this.patient.mail = "";
+    //   this.patient.password = "";
+    //   this.patient.passwordConfirm = "";
+    //   this.patient.gender = "man";
+    //   this.patient.accept = false;
+    // },
   },
 };
 </script>

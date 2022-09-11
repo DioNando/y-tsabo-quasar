@@ -36,6 +36,22 @@ const routes = [
         path: "dashboard",
         component: () => import("pages/doctor/DashboardDoctor.vue"),
       },
+      {
+        path: "appointments",
+        component: () => import("pages/doctor/AppointmentsDoctor.vue"),
+      },
+      {
+        path: "appointment-details",
+        component: () => import("pages/doctor/AppointmentDetails.vue"),
+      },
+      {
+        path: "add-appointment",
+        component: () => import("pages/doctor/AddAppointment.vue"),
+      },
+      {
+        path: "patient-list",
+        component: () => import("pages/doctor/PatientList.vue"),
+      },
     ],
   },
   {

@@ -1,18 +1,21 @@
+<style>
+@import "../../css/dashboardPatient.scss";
+</style>
 <template>
   <q-page class="q-pa-lg flex column">
-    <DashboardHeader></DashboardHeader>
-    <DashboardContainer></DashboardContainer>
+    <AppointmentsHeader></AppointmentsHeader>
+    <AppointmentsContent></AppointmentsContent>
   </q-page>
 </template>
 
 <script>
 import { useQuasar } from "quasar";
 import { useRouter } from "vue-router";
-import DashboardHeader from "src/components/doctor/Dashboard/DashboardHeader.vue";
-import DashboardContainer from "../../components/doctor/Dashboard/DashboardContainer.vue";
+import AppointmentsHeader from "src/components/doctor/Appointments/AppointmentsHeader.vue";
+import AppointmentsContent from "src/components/doctor/Appointments/AppointmentsContent.vue";
 
 export default {
-  name: "IndexPage",
+  name: "AppointmentsDoctor",
   data() {
     return {};
   },
@@ -31,6 +34,6 @@ export default {
       this.timer = void 0;
     });
   },
-  components: { DashboardHeader, DashboardContainer },
+  components: { AppointmentsHeader, AppointmentsContent },
 };
 </script>
