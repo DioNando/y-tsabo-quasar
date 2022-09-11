@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <q-form @submit="onSubmit" @reset="onReset">
+    <q-form>
       <q-stepper
         v-model="step"
         ref="stepper"
@@ -13,7 +13,7 @@
           <div class="text-h5 text-primary">Register</div>
           <div class="flex column flex-center">
             <transition
-              v-if="patient.gender === 'man'"
+              v-if="patient.sexePatient === 'man'"
               appear
               enter-active-class="animated fadeInLeft slow"
             >
@@ -26,45 +26,57 @@
               />
             </transition>
             <transition
-              v-else-if="patient.gender === 'woman'"
+              v-else-if="patient.sexePatient === 'woman'"
               appear
               enter-active-class="animated fadeInLeft slow"
             >
               <q-icon name="face_3" color="accent" size="5em" class="q-mb-lg" />
             </transition>
             <transition
-              v-else-if="patient.gender === 'other'"
+              v-else-if="patient.sexePatient === 'other'"
               appear
               enter-active-class="animated fadeInLeft slow"
             >
               <q-icon name="deblur" color="grey-7" size="5em" class="q-mb-lg" />
             </transition>
-            <!-- <transition
-              v-if="patient.name.length"
-              appear
-              enter-active-class="animated fadeInUp slow"
-            >
-              <div class="text-h4">{{ patient.name }}</div>
-            </transition> -->
           </div>
           <div class="q-gutter-sm q-pb-md">
-            <q-radio v-model="patient.gender" val="man" label="Man" />
-            <q-radio v-model="patient.gender" val="woman" label="Woman" />
-            <q-radio v-model="patient.gender" val="other" label="Other" />
+            <q-radio v-model="patient.sexePatient" val="man" label="Man" />
+            <q-radio v-model="patient.sexePatient" val="woman" label="Woman" />
+            <q-radio v-model="patient.sexePatient" val="other" label="Other" />
           </div>
           <q-input
             color="grey"
             dense
             outlined
             bottom-slots
-            label="Fullname"
+            label="Firstname"
             type="text"
-            v-model="patient.name"
+            v-model="patient.firstnamePatient"
             autocomplete="off"
             class="q-pb-lg"
             lazy-rules
             :rules="[
-              (val) => (val && val.length > 0) || 'Please enter your name',
+              (val) => (val && val.length > 0) || 'Please enter your firstname',
+            ]"
+          >
+            <template v-slot:prepend>
+              <q-icon name="person" />
+            </template>
+          </q-input>
+          <q-input
+            color="grey"
+            dense
+            outlined
+            bottom-slots
+            label="Lastname"
+            type="text"
+            v-model="patient.lastnamePatient"
+            autocomplete="off"
+            class="q-pb-lg"
+            lazy-rules
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please enter your lastname',
             ]"
           >
             <template v-slot:prepend>
@@ -78,7 +90,7 @@
             bottom-slots
             label="Age"
             type="text"
-            v-model="patient.age"
+            v-model="patient.agePatient"
             mask="###"
             autocomplete="off"
             class="q-pb-lg"
@@ -91,7 +103,7 @@
               <q-icon name="person" />
             </template>
           </q-input>
-          <q-input
+          <!-- <q-input
             color="primary"
             dense
             outlined
@@ -106,7 +118,7 @@
             <template v-slot:prepend>
               <q-icon name="badge" />
             </template>
-          </q-input>
+          </q-input> -->
         </q-step>
 
         <q-step :name="2" caption="Optional" icon="mail" :done="step > 2">
@@ -118,7 +130,7 @@
             bottom-slots
             label="Email"
             type="text"
-            v-model="patient.mail"
+            v-model="patient.emailPatient"
             autocomplete="off"
             class="q-pb-lg"
             lazy-rules
@@ -128,6 +140,44 @@
           >
             <template v-slot:prepend>
               <q-icon name="mail" />
+            </template>
+          </q-input>
+          <q-input
+            color="grey"
+            dense
+            outlined
+            bottom-slots
+            label="Phone Number"
+            type="text"
+            v-model="patient.phonePatient"
+            autocomplete="off"
+            class="q-pb-lg"
+            lazy-rules
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please enter your phone number',
+            ]"
+          >
+            <template v-slot:prepend>
+              <q-icon name="call" />
+            </template>
+          </q-input>
+          <q-input
+            color="grey"
+            dense
+            outlined
+            bottom-slots
+            label="Address"
+            type="text"
+            v-model="patient.addressPatient"
+            autocomplete="off"
+            class="q-pb-lg"
+            lazy-rules
+            :rules="[
+              (val) => (val && val.length > 0) || 'Please enter your address',
+            ]"
+          >
+            <template v-slot:prepend>
+              <q-icon name="location_on" />
             </template>
           </q-input>
         </q-step>
@@ -141,7 +191,7 @@
             bottom-slots
             label="Password"
             type="password"
-            v-model="patient.password"
+            v-model="patient.passwordPatient"
             class="q-pb-lg"
             autocomplete="off"
             lazy-rules
@@ -168,7 +218,7 @@
             lazy-rules
             :rules="[
               (val) =>
-                (val && val == patient.password) ||
+                (val && val == patient.passwordPatient) ||
                 'Your password don\'t match',
             ]"
           >
@@ -187,25 +237,19 @@
         <template v-slot:navigation>
           <q-stepper-navigation class="q-pb-lg flex justify-between">
             <q-btn
-              v-if="step == 1"
               outline
               label="Back"
-              @click="this.router.push('/login/patient')"
+              @click="
+                step === 1
+                  ? this.router.push('/login/patient')
+                  : $refs.stepper.previous()
+              "
               color="primary"
               icon="chevron_left"
               class="q-mr-lg"
             />
             <q-btn
-              v-if="step > 1"
-              outline
-              color="primary"
-              @click="$refs.stepper.previous()"
-              label="Back"
-              icon="chevron_left"
-              class="q-mr-lg"
-            />
-            <q-btn
-              @click="$refs.stepper.next()"
+              @click="step === 3 ? onSubmit() : $refs.stepper.next()"
               unelevated
               color="primary"
               :label="step === 3 ? 'Register' : 'Continue'"
@@ -222,6 +266,7 @@
 import { ref } from "vue";
 import { useQuasar } from "quasar";
 import { useRouter } from "vue-router";
+import { registerPatient } from "src/api/patient";
 
 export default {
   name: "RegisterPatient",
@@ -229,13 +274,15 @@ export default {
   data() {
     return {
       patient: {
-        name: "",
-        age: "",
-        idNumber: "",
-        mail: "",
-        password: "",
+        lastnamePatient: "",
+        firstnamePatient: "",
+        emailPatient: "",
+        phonePatient: "",
+        addressPatient: "",
+        sexePatient: "man",
+        agePatient: "",
+        passwordPatient: "",
         passwordConfirm: "",
-        gender: "man",
         accept: false,
       },
     };
@@ -274,7 +321,7 @@ export default {
     };
   },
   methods: {
-    onSubmit() {
+    async onSubmit() {
       if (this.patient.accept !== true) {
         this.toast.notify({
           color: "negative",
@@ -284,20 +331,23 @@ export default {
           position: "top",
         });
       } else {
-        this.simulateProgress(1);
+        console.log(this.patient);
+        await registerPatient(this.patient)
+          .then(() => {
+            this.simulateProgress(1);
+          })
+          .catch((error) => {
+            this.toast.notify({
+              color: "negative",
+              textColor: "white",
+              icon: "warning",
+              message: "Error",
+              position: "top",
+            });
+            console.log(error);
+          });
       }
     },
-
-    // onReset() {
-    //   this.patient.name = "";
-    //   this.patient.age = "";
-    //   this.patient.idNumber = "";
-    //   this.patient.mail = "";
-    //   this.patient.password = "";
-    //   this.patient.passwordConfirm = "";
-    //   this.patient.gender = "man";
-    //   this.patient.accept = false;
-    // },
   },
 };
 </script>

@@ -6,7 +6,7 @@ export default {
   },
   getters: {
     isLoggedIn: (state) => state.isLoggedIn,
-    meDoctor: (state) => state.patient,
+    meDoctor: (state) => state.doctor,
   },
   mutations: {
     SET_DOCTOR: (state, payload) => {

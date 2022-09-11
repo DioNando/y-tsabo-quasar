@@ -2,14 +2,14 @@ import axios from "axios";
 import { BASE_URL } from "../configs";
 
 const URL = BASE_URL + "/doctor";
-const URL_AUTH = BASE_URL + "/auth-doctor/local/signin"
+const URL_AUTH = BASE_URL + "/auth-doctor/local"
 
 export const loginDoctor = (data) => {
-  return axios.post(`${URL_AUTH}`, data);
+  return axios.post(`${URL_AUTH}/signin`, data);
 };
 
-export const addDoctor = (data) => {
-  return axios.post(`${URL}`, data);
+export const registerDoctor = (data) => {
+  return axios.post(`${URL_AUTH}/signup`, data);
 };
 
 export const getAllDoctors = () => {

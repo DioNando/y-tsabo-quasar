@@ -152,7 +152,7 @@ export default {
               color: "negative",
               textColor: "white",
               icon: "warning",
-              message: `Error`,
+              message: `${error}`,
               position: "top",
             });
             console.log(error);
