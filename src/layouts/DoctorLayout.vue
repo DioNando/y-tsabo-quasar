@@ -25,7 +25,7 @@
         </div>
         <div style="margin-left: 3%">
           <p>
-            Hi Dr. John Doe ! <br />
+            Hi Dr. {{ meDoctor.firstnameDoctor + " " + meDoctor.lastnameDoctor }} ! <br />
             How are you today ?
           </p>
         </div>
@@ -67,6 +67,14 @@ export default {
         rightDrawerOpen.value = !rightDrawerOpen.value;
       },
     };
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters["doctorStore/isLoggedIn"];
+    },
+    meDoctor() {
+      return this.$store.getters["doctorStore/meDoctor"];
+    },
   },
 };
 </script>

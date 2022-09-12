@@ -1,2 +1,2 @@
-// export const BASE_URL = "http://localhost:3000";
-export const BASE_URL = "https://y-tsabo.up.railway.app";
+export const BASE_URL = "http://localhost:3000";
+// export const BASE_URL = "https://y-tsabo.up.railway.app";

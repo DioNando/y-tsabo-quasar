@@ -1,5 +1,6 @@
 import axios from "axios";
 import { BASE_URL } from "../configs";
+import { axiosInstance } from "./config";
 
 const URL = BASE_URL + "/doctor";
 const URL_AUTH = BASE_URL + "/auth-doctor/local"
@@ -13,7 +14,7 @@ export const registerDoctor = (data) => {
 };
 
 export const getAllDoctors = () => {
-  return axios.get(`${URL}`);
+  return axiosInstance.get(`${URL}`);
 };
 
 export const getDoctor = (id) => {
@@ -21,9 +22,9 @@ export const getDoctor = (id) => {
 };
 
 export const updateDoctor = (id, data) => {
-  return axios.put(`${URL}/${id}`, data);
+  return axiosInstance.put(`${URL}/${id}`, data);
 };
 
 export const deleteDoctor = (id) => {
-  return axios.delete(`${URL}/${id}`);
+  return axiosInstance.delete(`${URL}/${id}`);
 };

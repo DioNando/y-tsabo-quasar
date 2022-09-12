@@ -14,7 +14,7 @@
           width: 85%;
           height: 6vh;
         "
-        value="John Doe"
+        v-model="user.mail"
         disabled
         required
       />

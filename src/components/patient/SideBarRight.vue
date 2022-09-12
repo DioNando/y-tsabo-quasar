@@ -47,7 +47,7 @@ ul > li > a {
             font-size: 2.25vh;
           "
         >
-          John Doe
+          {{ mePatient.firstnamePatient + " " + mePatient.lastnamePatient }}
         </p>
       </div>
       <div style="margin-top: 12%">
@@ -92,6 +92,13 @@ export default {
 
     return { router };
   },
-  methods: {},
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters["patientStore/isLoggedIn"];
+    },
+    mePatient() {
+      return this.$store.getters["patientStore/mePatient"];
+    },
+  },
 };
 </script>

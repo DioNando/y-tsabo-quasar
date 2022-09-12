@@ -47,7 +47,7 @@ ul > li > a {
             font-size: 2.25vh;
           "
         >
-          Dr. John Doe
+          {{ meDoctor.firstnameDoctor }}
         </p>
       </div>
       <div style="margin-top: 12%">
@@ -92,6 +92,13 @@ export default {
 
     return { router };
   },
-  methods: {},
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters["doctorStore/isLoggedIn"];
+    },
+    meDoctor() {
+      return this.$store.getters["doctorStore/meDoctor"];
+    },
+  },
 };
 </script>
