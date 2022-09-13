@@ -17,6 +17,10 @@ export const getAllDoctors = () => {
   return axiosInstance.get(`${URL}`);
 };
 
+export const getAllDoctorsID = () => {
+  return axiosInstance.get(`${URL}/id`);
+};
+
 export const getDoctor = (id) => {
   return axios.get(`${URL}/${id}`);
 };

@@ -14,7 +14,6 @@
           width: 85%;
           height: 6vh;
         "
-        v-model="user.mail"
         disabled
         required
       />
@@ -33,14 +32,14 @@
           width: 85%;
           height: 6vh;
         "
-        value="{{ timestamp }}"
+        v-model="appointment.dateAppointment"
         required
       />
     </div>
     <div class="flex flex-center" style="margin-top: 10%">
       <q-icon name="schedule" size="1.75rem" style="color: #60a09a" />
       <input
-        type="text"
+        type="time"
         style="
           padding: 10px;
           background-color: #fff;
@@ -52,12 +51,13 @@
           height: 6vh;
         "
         required
+        v-model="appointment.timeAppointment"
       />
     </div>
-    <div class="flex flex-center" style="margin-top: 10%">
+    <!-- <div class="flex flex-center" style="margin-top: 10%">
       <q-icon name="medication_liquid" size="1.75rem" style="color: #60a09a" />
       <q-select
-        v-model="DoctorList"
+        v-model="appointment.doctor"
         :options="options"
         label="Choose a specialist"
         style="
@@ -69,8 +69,8 @@
           height: 6vh;
         "
       />
-    </div>
-    <div class="flex flex-center" style="margin-top: 10%">
+    </div> -->
+    <!-- <div class="flex flex-center" style="margin-top: 10%">
       <q-icon name="info" size="1.75rem" style="color: #60a09a" />
       <input
         type="text"
@@ -87,7 +87,7 @@
         required
         placeholder="Describe us your disease"
       />
-    </div>
+    </div> -->
     <q-btn
       label="Create appointment"
       type="submit"
@@ -100,8 +100,12 @@
 </template>
 
 <script>
+import { useQuasar } from "quasar";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
+import doctorStore from "src/store/modules/doctorStore";
+import { getAllDoctorsID } from "src/api/doctor";
+import { appAppointmentPatient } from "src/api/patient";
 
 export default {
   name: "AddAppointmentComponent",
@@ -109,38 +113,74 @@ export default {
   data() {
     return {
       timestamp: "",
-      user: {
-        mail: "",
-        password: "",
-        type: "patient",
-      },
-      DoctorList: "",
       model: ref(null),
-      options: ["John Doe", "Doe John"],
+      appointment: {
+        dateAppointment: "",
+        timeAppointment: "",
+        patient: "",
+        doctor: [],
+      },
+      options: [
+        { label: "Generalist", value: "1" },
+        { label: "Surgeon", value: "2" },
+        { label: "Pediatrician", value: "3" },
+        { label: "Ophthalmologist", value: "4" },
+        { label: "Psychologist", value: "5" },
+      ],
+      // patient: {
+      //   dateAppointment: "",
+      //   timeAppointment: "",
+      //   patient: "",
+      //   doctor: "",
+      // },
     };
   },
   created() {
     setInterval(this.getNow, 1000);
   },
+  mounted() {
+    let mePatient = this.$store.getters["patientStore/mePatient"];
+    this.appointment.patient = mePatient.idPatient;
+
+    getAllDoctorsID()
+      .then((result) => {
+        this.options = result.data[0];
+        console.log(this.options);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
   setup() {
     const router = useRouter();
+    const toast = useQuasar();
 
-    return { router };
+    return { router, toast };
   },
   methods: {
-    onSubmit() {
-      if (this.user.type === "patient") {
-        this.router.push("/patient/dashboard");
-      } else {
-        this.router.push("/doctor/dashboard");
-      }
-      this.toast.notify({
-        color: "positive",
-        textColor: "white",
-        icon: "waving_hand",
-        message: "Nice to see you, " + this.user.mail,
-        position: "top",
-      });
+    async onSubmit() {
+      console.log(this.appointment);
+      await appAppointmentPatient(this.appointment)
+        .then(() => {
+          this.toast.notify({
+            color: "positive",
+            textColor: "white",
+            icon: "warning",
+            message: "Votre rendez-vous a bien été prise en charge",
+            position: "top",
+          });
+          this.router.go(-1);
+        })
+        .catch((error) => {
+          this.toast.notify({
+            color: "negative",
+            textColor: "white",
+            icon: "warning",
+            message: "Error",
+            position: "top",
+          });
+          console.log(error);
+        });
     },
     getNow: function () {
       const today = new Date();
@@ -156,5 +196,10 @@ export default {
       this.timestamp = dateTime;
     },
   },
+  // computed: {
+  //   mePatient() {
+  //     return this.$store.getters["patientStore/mePatientId"];
+  //   },
+  // },
 };
 </script>

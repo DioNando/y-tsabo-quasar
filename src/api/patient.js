@@ -29,3 +29,7 @@ export const updatePatient = (id, data) => {
 export const deletePatient = (id) => {
   return axiosInstance.delete(`${URL}/${id}`);
 };
+
+export const appAppointmentPatient = (data) => {
+  return axiosInstance.post(`${BASE_URL}/appointment`, data);
+};

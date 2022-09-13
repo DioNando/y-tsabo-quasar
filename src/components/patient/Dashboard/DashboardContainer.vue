@@ -71,7 +71,9 @@
         class="q-pa-md items-explore flex no-wrap items-center justify-between"
       >
         <div class="cut-text">Create an appointment</div>
-        <q-btn round color="grey-1" class="text-black" icon="chevron_right" size="sm" />
+        <q-btn round color="grey-1" class="text-black" icon="chevron_right" size="sm"
+        @click="router.push(`/patient/add-appointment`)"
+        />
       </q-card>
       <q-card
         flat
