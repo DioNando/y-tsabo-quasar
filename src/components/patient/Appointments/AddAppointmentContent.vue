@@ -14,6 +14,7 @@
           width: 85%;
           height: 6vh;
         "
+        v-model="appointment.name"
         disabled
         required
       />
@@ -103,7 +104,6 @@
 import { useQuasar } from "quasar";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
-import doctorStore from "src/store/modules/doctorStore";
 import { getAllDoctorsID } from "src/api/doctor";
 import { appAppointmentPatient } from "src/api/patient";
 
@@ -115,6 +115,7 @@ export default {
       timestamp: "",
       model: ref(null),
       appointment: {
+        name: "",
         dateAppointment: "",
         timeAppointment: "",
         patient: "",
@@ -127,12 +128,6 @@ export default {
         { label: "Ophthalmologist", value: "4" },
         { label: "Psychologist", value: "5" },
       ],
-      // patient: {
-      //   dateAppointment: "",
-      //   timeAppointment: "",
-      //   patient: "",
-      //   doctor: "",
-      // },
     };
   },
   created() {
@@ -141,11 +136,13 @@ export default {
   mounted() {
     let mePatient = this.$store.getters["patientStore/mePatient"];
     this.appointment.patient = mePatient.idPatient;
+    this.appointment.name = mePatient.firstnamePatient + ' ' + mePatient.lastnamePatient;
 
     getAllDoctorsID()
       .then((result) => {
-        this.options = result.data[0];
-        console.log(this.options);
+        // this.options = result.data[0];
+        // console.log(this.options);
+        console.log(result);
       })
       .catch((error) => {
         console.log(error);
