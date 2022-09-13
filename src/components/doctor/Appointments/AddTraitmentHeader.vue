@@ -1,11 +1,6 @@
 <template>
   <div>
-    <p style="font-size: 24px; font-weight: 600">Add Appointment</p>
-    <p style="font-size: 16px; margin-top: -10px">
-      Let's create an appointment for you.
-      <br />
-      Please complete the form bellow .
-    </p>
+    <p style="font-size: 24px; font-weight: 600">Add treatment</p>
   </div>
 </template>
 
@@ -13,7 +8,7 @@
 import { useRouter } from "vue-router";
 
 export default {
-  name: "AddAppointmentHeader",
+  name: "AddTraitmentHeader",
   components: {},
   data() {
     return {};

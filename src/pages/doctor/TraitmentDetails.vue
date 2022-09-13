@@ -3,19 +3,19 @@
 </style>
 <template>
   <q-page class="q-pa-lg flex column">
-    <AddAppointmentHeader></AddAppointmentHeader>
-    <AddAppointmentContent></AddAppointmentContent>
+    <TraitmentDetailsHeader></TraitmentDetailsHeader>
+    <TraitmentDetailsContainer></TraitmentDetailsContainer>
   </q-page>
 </template>
 
 <script>
 import { useQuasar } from "quasar";
 import { useRouter } from "vue-router";
-import AddAppointmentHeader from "src/components/doctor/Appointments/AddAppointmentHeader.vue";
-import AddAppointmentContent from "src/components/doctor/Appointments/AddAppointmentContent.vue";
+import TraitmentDetailsHeader from "src/components/doctor/Traitments/TraitmentDetailsHeader.vue";
+import TraitmentDetailsContainer from "src/components/doctor/Traitments/TraitmentDetailsContainer.vue";
 
 export default {
-  name: "AddAppointment",
+  name: "TraitmentDetails",
   data() {
     return {};
   },
@@ -34,6 +34,6 @@ export default {
       this.timer = void 0;
     });
   },
-  components: { AddAppointmentHeader, AddAppointmentContent },
+  components: { TraitmentDetailsHeader, TraitmentDetailsContainer },
 };
 </script>

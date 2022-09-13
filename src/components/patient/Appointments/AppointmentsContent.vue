@@ -10,7 +10,14 @@
       <q-card-section class="q-pa-sm">
         <div class="flex items-center q-gutter-x-sm">
           <q-btn flat round icon="medication_liquid" />
-          <div>Dr {{ appointment.doctor_appointmentTodoctor.firstnameDoctor + ' ' + appointment.doctor_appointmentTodoctor.lastnameDoctor }}</div>
+          <div>
+            Dr
+            {{
+              appointment.doctor_appointmentTodoctor.firstnameDoctor +
+              " " +
+              appointment.doctor_appointmentTodoctor.lastnameDoctor
+            }}
+          </div>
         </div>
         <div class="flex items-center q-gutter-x-sm">
           <q-btn flat round icon="event" />

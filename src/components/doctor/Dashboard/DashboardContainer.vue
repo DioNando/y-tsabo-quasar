@@ -77,7 +77,10 @@
       "
     >
       <div class="col">
-        <p style="font-weight: 500">Create an appointment</p>
+        <p style="font-weight: 500">
+          Explore all <br />
+          traitments
+        </p>
       </div>
       <div class="col-2">
         <div
@@ -90,7 +93,7 @@
             box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
             border-radius: 10px;
           "
-          @click="router.push(`/doctor/add-appointment`)"
+          @click="router.push(`/doctor/list-traitments`)"
         >
           <q-icon
             name="arrow_forward_ios"
