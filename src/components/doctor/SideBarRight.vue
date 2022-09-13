@@ -70,7 +70,7 @@ ul > li > a {
             <a href="#">Settings</a>
           </li>
           <li>
-            <a href="#">Log out</a>
+            <a @click="disconnect">Log out</a>
           </li>
         </ul>
       </div>
@@ -80,6 +80,7 @@ ul > li > a {
 
 <script>
 import { useRouter } from "vue-router";
+import { useQuasar } from "quasar";
 
 export default {
   name: "SideBarRight",
@@ -89,8 +90,9 @@ export default {
   },
   setup() {
     const router = useRouter();
+    const toast = useQuasar();
 
-    return { router };
+    return { router, toast };
   },
   computed: {
     isLoggedIn() {
@@ -98,6 +100,21 @@ export default {
     },
     meDoctor() {
       return this.$store.getters["doctorStore/meDoctor"];
+    },
+  },
+  methods: {
+    disconnect() {
+      localStorage.removeItem("token");
+      this.$store.dispatch("doctorStore/setDoctor", {});
+      this.$store.dispatch("doctorStore/setDisconnected");
+      this.toast.notify({
+        color: "positive",
+        textColor: "white",
+        icon: "waving_hand",
+        message: `See you Dr`,
+        position: "top",
+      });
+      this.router.push("/login/doctor");
     },
   },
 };

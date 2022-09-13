@@ -118,7 +118,7 @@ export default {
         dateAppointment: "",
         timeAppointment: "",
         patient: "",
-        doctor: [],
+        doctor: 1,
       },
       options: [
         { label: "Generalist", value: "1" },
@@ -166,7 +166,7 @@ export default {
             color: "positive",
             textColor: "white",
             icon: "warning",
-            message: "Votre rendez-vous a bien été prise en charge",
+            message: "Appointment has been saved",
             position: "top",
           });
           this.router.go(-1);
