@@ -59,7 +59,7 @@
       <q-icon name="medication_liquid" size="1.75rem" style="color: #60a09a" />
       <q-select
         v-model="appointment.doctor"
-        :options="options"
+        :options="doctors"
         label="Choose a specialist"
         style="
           padding-left: 10px;
@@ -121,13 +121,20 @@ export default {
         patient: "",
         doctor: "",
       },
-      options: [
+      doctors: [
         { label: "Generalist", value: "1" },
         { label: "Surgeon", value: "2" },
         { label: "Pediatrician", value: "3" },
         { label: "Ophthalmologist", value: "4" },
         { label: "Psychologist", value: "5" },
       ],
+      // options: [
+      //   { value: "1" },
+      //   { value: "2" },
+      //   { value: "3" },
+      //   { value: "4" },
+      //   { value: "5" },
+      // ],
     };
   },
   created() {
@@ -136,7 +143,8 @@ export default {
   mounted() {
     let mePatient = this.$store.getters["patientStore/mePatient"];
     this.appointment.patient = mePatient.idPatient;
-    this.appointment.name = mePatient.firstnamePatient + ' ' + mePatient.lastnamePatient;
+    this.appointment.name =
+      mePatient.firstnamePatient + " " + mePatient.lastnamePatient;
 
     getAllDoctorsID()
       .then((result) => {
