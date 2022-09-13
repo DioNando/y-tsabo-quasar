@@ -54,7 +54,7 @@
         v-model="appointment.timeAppointment"
       />
     </div>
-    <!-- <div class="flex flex-center" style="margin-top: 10%">
+    <div class="flex flex-center" style="margin-top: 10%">
       <q-icon name="medication_liquid" size="1.75rem" style="color: #60a09a" />
       <q-select
         v-model="appointment.doctor"
@@ -69,7 +69,7 @@
           height: 6vh;
         "
       />
-    </div> -->
+    </div>
     <!-- <div class="flex flex-center" style="margin-top: 10%">
       <q-icon name="info" size="1.75rem" style="color: #60a09a" />
       <input
@@ -118,7 +118,7 @@ export default {
         dateAppointment: "",
         timeAppointment: "",
         patient: "",
-        doctor: 1,
+        doctor: "",
       },
       options: [
         { label: "Generalist", value: "1" },

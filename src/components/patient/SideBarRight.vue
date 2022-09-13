@@ -114,7 +114,7 @@ export default {
         message: `Get well, see you`,
         position: "top",
       });
-      this.router.push("/login/patient");
+      this.router.push("/login");
     },
   },
 };

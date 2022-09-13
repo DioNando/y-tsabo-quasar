@@ -114,7 +114,7 @@ export default {
         message: `See you Dr`,
         position: "top",
       });
-      this.router.push("/login/doctor");
+      this.router.push("/login");
     },
   },
 };
