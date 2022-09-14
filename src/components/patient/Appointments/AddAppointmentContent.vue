@@ -58,7 +58,6 @@
     <div class="flex flex-center" style="margin-top: 10%">
       <q-icon name="medication_liquid" size="1.75rem" style="color: #60a09a" />
       <q-select
-        v-model="appointment.doctor"
         :options="doctors"
         label="Choose a specialist"
         style="
@@ -119,7 +118,7 @@ export default {
         dateAppointment: "",
         timeAppointment: "",
         patient: "",
-        doctor: "",
+        doctor: 17,
       },
       doctors: [
         { label: "Generalist", value: "1" },

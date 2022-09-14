@@ -32,3 +32,7 @@ export const updateDoctor = (id, data) => {
 export const deleteDoctor = (id) => {
   return axiosInstance.delete(`${URL}/${id}`);
 };
+
+export const getDoctorAppointment = (id) => {
+  return axiosInstance.get(`${BASE_URL}/appointment/doctor/${id}`);
+};
